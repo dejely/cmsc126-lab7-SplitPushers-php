@@ -25,6 +25,8 @@
             </select><br>
             <label for = "yearLvl">Year: </label><br>
             <input type = "number" min = "0" max = "50" name = "yearLvl" id = "yearLvl"><br>
+            <label for = "graduating">Graduating </label>
+            <input type = "checkbox" name = "graduating" id = "graduating" value=1><br>
             <br><input type = "submit" name = "submit" value = "Register">
             
             
