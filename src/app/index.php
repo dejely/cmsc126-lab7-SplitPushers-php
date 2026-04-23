@@ -17,7 +17,12 @@
             <input type = "email" name = "email" id = "email"><br>
             <h3>Academic Information</h3>
             <label for = "courseName">Course: </label><br>
-            <input type = "text" name = "courseName" id = "courseName"><br>
+            <select name = "courseName" id = "courseName">
+                <option value = "BS Computer Science">BS Computer Science</option>
+                <option value = "BS Statistics">BS Statistics</option>
+                <option value = "BS Applied Mathematics">BS Applied Mathematics</option>
+                <option value = "BS Chemistry">BS Chemistry</option>
+            </select><br>
             <label for = "yearLvl">Year: </label><br>
             <input type = "number" min = "0" max = "50" name = "yearLvl" id = "yearLvl"><br>
             <br><input type = "submit" name = "submit" value = "Register">
