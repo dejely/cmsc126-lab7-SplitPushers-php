@@ -1,6 +1,7 @@
 <?php
 include("connection.php");
 //create tables
+//considering making a seperate table to track courses and course names
 $sql_student_table = 
 "CREATE TABLE student(
     studentID INT(8) AUTO_INCREMENT PRIMARY KEY,
