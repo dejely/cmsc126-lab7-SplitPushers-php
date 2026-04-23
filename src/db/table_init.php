@@ -12,8 +12,8 @@ $sql_student_table =
 ";
 $sql_acad_table = 
 "CREATE TABLE academics(
-    studentID INT(8),
-    courseID INT(4) PRIMARY KEY,
+    studentID INT(8) PRIMARY KEY,
+    courseID INT(4),
     courseName VARCHAR(50) NOT NULL,
     yearLvl INT(2),
     graduating BOOL
