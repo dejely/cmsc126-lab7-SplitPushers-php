@@ -1,1 +1,1 @@
-hello world
+__DIR__ = Returning the file inclusively
