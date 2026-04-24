@@ -8,7 +8,8 @@ $sql_student_table =
     studentID INT(8) AUTO_INCREMENT PRIMARY KEY,
     studentName VARCHAR(30) NOT NULL,
     age INT(2) NOT NULL,
-    email VARCHAR(50) NOT NULL
+    email VARCHAR(50) NOT NULL,
+    profilePath VARCHAR(255)
     )
 ";
 $sql_acad_table = 
@@ -25,6 +26,16 @@ if ($conn->query($sql_student_table) === TRUE) {
 }else{
     echo "Error creating student table: ".$conn->error;
 }
+
+$profile_column = $conn->query("SHOW COLUMNS FROM student LIKE 'profilePath'");
+if ($profile_column && $profile_column->num_rows === 0) {
+    if ($conn->query("ALTER TABLE student ADD profilePath VARCHAR(255)") === TRUE) {
+        echo "Profile path column added successfully<br>";
+    } else {
+        echo "Error adding profile path column: " . $conn->error;
+    }
+}
+
 if ($conn->query($sql_acad_table) === TRUE) {
     echo "Academics table ready successfully<br>";
 }else{

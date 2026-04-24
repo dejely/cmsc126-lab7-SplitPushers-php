@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
 </head>
 <body>
     <div id = "studentInfoBox">
-        <form method = "post" action = "index.php">
+        <form method = "post" action = "index.php" enctype = "multipart/form-data">
             <h3>Student Information</h3>
             <label for = "studentName">Student Name: </label><br>
             <input type = "text" name = "studentName" id = "studentName"><br>
@@ -74,7 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
             <input type = "number" min = "0" max = "50" name = "yearLvl" id = "yearLvl"><br>
             <label for = "graduating">Graduating </label>
             <input type = "checkbox" name = "graduating" id = "graduating" value=1><br>
-            <br><input type="file" name='profile'><br>
+            <label for = "profile">Profile File/Image: </label><br>
+            <input type = "file" name = "profile" id = "profile"><br>
             <br><input type = "submit" name = "submit" value = "Register">
             
         </form>
@@ -85,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
     </div>
 
     <div id = "operationsBox">
-        <form method = "post" action = "index.php">
+        <form method = "post" action = "index.php" enctype = "multipart/form-data">
             <h3>Student Operations</h3>
             <div class = "operationRow">
                 <div>
@@ -164,6 +165,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                         <?php echo $updateGraduating ? "checked" : ""; ?>
                     >
                 </div>
+                <div class = "operationField">
+                    <label for = "updateProfile">New Profile File/Image: </label><br>
+                    <input type = "file" name = "updateProfile" id = "updateProfile">
+                </div>
                 <br>
                 <input type = "submit" name = "update" value = "Update Student">
             <?php endif; ?>
@@ -181,6 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                         <th>Student Name</th>
                         <th>Age</th>
                         <th>Email</th>
+                        <th>Profile Path</th>
                         <th>Course ID</th>
                         <th>Course Name</th>
                         <th>Year Level</th>
@@ -194,6 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                             <td><?php echo displayValue($row["studentName"]); ?></td>
                             <td><?php echo displayValue($row["age"]); ?></td>
                             <td><?php echo displayValue($row["email"]); ?></td>
+                            <td><?php echo displayValue($row["profilePath"]); ?></td>
                             <td><?php echo displayValue($row["courseID"]); ?></td>
                             <td><?php echo displayValue($row["courseName"]); ?></td>
                             <td><?php echo displayValue($row["yearLvl"]); ?></td>
