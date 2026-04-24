@@ -1,14 +1,16 @@
 <?php
-//connection init
-$servername = "localhost";
-$username = "root";
-$password = "";
-$conn = new mysqli($servername, $username, $password, $dbname);
+require_once __DIR__ . "/config.php";
 
-//database init
-$sql_db = "CREATE DATABASE lab7";
+// Connect to MariaDB first, then create the project database.
+$conn = new mysqli($servername, $username, $password);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql_db = "CREATE DATABASE IF NOT EXISTS `$dbname`";
 if ($conn->query($sql_db) === TRUE) {
-    echo "Database created successfully";
+    echo "Database ready successfully";
 }else{
     echo "Error creating database: ".$conn->error;
 }

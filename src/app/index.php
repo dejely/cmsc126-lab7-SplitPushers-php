@@ -1,3 +1,22 @@
+<?php
+$insertMessage = "";
+$selectStudentID = "";
+$selectStudentName = "";
+$selectRows = [];
+$selectMessage = "";
+
+function displayValue($value) {
+    return htmlspecialchars((string) ($value ?? ""));
+}
+
+// tell the server to post back to this location and display the error message
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
+    require_once __DIR__ . "/../handlers/select.php";
+} elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
+    require_once __DIR__ . "/../handlers/insert.php";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +26,7 @@
 </head>
 <body>
     <div id = "studentInfoBox">
-        <form method = "post" action = "../insert.php">
+        <form method = "post" action = "index.php">
             <h3>Student Information</h3>
             <label for = "studentName">Student Name: </label><br>
             <input type = "text" name = "studentName" id = "studentName"><br>
@@ -29,11 +48,66 @@
             <input type = "checkbox" name = "graduating" id = "graduating" value=1><br>
             <br><input type = "submit" name = "submit" value = "Register">
             
-            
         </form>
+
+        <?php if ($insertMessage !== ""): ?>
+            <p><?php echo displayValue($insertMessage); ?></p>
+        <?php endif; ?>
     </div>
     <div id = "acadInfoBox">
+        <form method = "post" action = "index.php">
+            <h3>Select Student Record</h3>
+            <label for = "selectStudentID">Student ID: </label><br>
+            <input
+                type = "number"
+                name = "studentID"
+                id = "selectStudentID"
+                value = "<?php echo displayValue($selectStudentID); ?>"
+            ><br>
+            <label for = "selectStudentName">Student Name: </label><br>
+            <input
+                type = "text"
+                name = "studentName"
+                id = "selectStudentName"
+                value = "<?php echo displayValue($selectStudentName); ?>"
+            ><br>
+            <br><input type = "submit" name = "select" value = "Select Student">
+        </form>
 
+        <?php if ($selectMessage !== ""): ?>
+            <p><?php echo displayValue($selectMessage); ?></p>
+        <?php endif; ?>
+
+        <?php if (count($selectRows) > 0): ?>
+            <table border = "1" cellpadding = "8" cellspacing = "0">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Year Level</th>
+                        <th>Graduating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($selectRows as $row): ?>
+                        <tr>
+                            <td><?php echo displayValue($row["studentID"]); ?></td>
+                            <td><?php echo displayValue($row["studentName"]); ?></td>
+                            <td><?php echo displayValue($row["age"]); ?></td>
+                            <td><?php echo displayValue($row["email"]); ?></td>
+                            <td><?php echo displayValue($row["courseID"]); ?></td>
+                            <td><?php echo displayValue($row["courseName"]); ?></td>
+                            <td><?php echo displayValue($row["yearLvl"]); ?></td>
+                            <td><?php echo $row["graduating"] === null ? "" : ($row["graduating"] ? "Yes" : "No"); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
     </div>
 </body>
 </html>

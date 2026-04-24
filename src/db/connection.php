@@ -1,13 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "lab7";
+require_once __DIR__ . "/config.php";
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Connected failed ". $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
-
-echo "Connected Successfully<br/>"
 ?>
