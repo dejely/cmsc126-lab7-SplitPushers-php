@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <div id = "mainBox">
+    <div id = "mainBox" class = "box">
     <div id = "studentInfoBox">
         <form method = "post" action = "index.php" enctype = "multipart/form-data">
             <h3>Student Information</h3>
@@ -66,7 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
         </form>
 
         <?php if ($insertMessage !== ""): ?>
-            <p><?php echo displayValue($insertMessage); ?></p>
+            <div>
+                <p><?php echo displayValue($insertMessage); ?></p>
+            </div>
         <?php endif; ?>
     </div>
 
@@ -83,13 +85,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                         value = "<?php echo displayValue($operationStudentID); ?>"
                     >
                 </div>
-                <input type = "submit" name = "select" value = "Select Student">
-                <input type = "submit" name = "showUpdate" value = "Update Student">
-                <input type = "submit" name = "delete" value = "Delete Student">
+                <div id = "operationButtons">
+                    <input type = "submit" name = "select" value = "Select Student">
+                    <input type = "submit" name = "showUpdate" value = "Update Student">
+                    <input type = "submit" name = "delete" value = "Delete Student">
+                </div>
             </div>
         </div>
 
             <?php if ($showUpdateForm): ?>
+                <div id= "operationBox" class = "box">
                 <h4>Update Information</h4>
                 <div class = "operationField">
                     <label for = "updateStudentName">Student Name: </label><br>
@@ -195,6 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                     <?php endforeach; ?>
                 </tbody>
             </table>
+                    </div>
         <?php endif; ?>
     </div>
 </body>
