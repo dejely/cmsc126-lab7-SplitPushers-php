@@ -1,0 +1,97 @@
+body{
+    display: flex;
+    background-color: #FFF8F0;
+    justify-content: center;
+}
+
+.operationRow {
+            display: flex;
+            align-items: end;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+.operationRow input[type="number"] {
+            width: 160px;
+        }
+
+.operationField {
+            display: inline-block;
+            margin: 0 12px 10px 0;
+        }
+
+body div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #51355A;
+        
+        }
+
+input[type="text"], input[type="number"], input[type="email"] {
+            width: 500px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #F5F8DE;
+        }
+
+input[type="submit"] {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #783040;
+            color: #FFF8F0;
+            cursor: pointer;
+        }
+
+input[type="submit"]:hover {
+            background-color: #af495f;
+        }
+
+input[type="file"] {
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #F5F8DE;
+        }
+
+h3 {
+            color: #FFF8F0;
+            text-align: center;
+            background-color: #8E8358;
+        }
+
+label {
+            color: #FFF8F0;
+            font-style: italic;
+            margin: 0 12px 10px 0;
+        }
+
+#mainBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #9E2B25;
+            width: 600px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+#operationStudentID{
+        width: 100px;
+}
+
+select {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #783040;
+    color: #FFF8F0;    
+}

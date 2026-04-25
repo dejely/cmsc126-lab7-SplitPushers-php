@@ -34,25 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <style>
-        .operationRow {
-            display: flex;
-            align-items: end;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .operationRow input[type="number"] {
-            width: 160px;
-        }
-
-        .operationField {
-            display: inline-block;
-            margin: 0 12px 10px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+    <div id = "mainBox">
     <div id = "studentInfoBox">
         <form method = "post" action = "index.php" enctype = "multipart/form-data">
             <h3>Student Information</h3>
@@ -71,9 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                 <option value = "BS Chemistry">BS Chemistry</option>
             </select><br>
             <label for = "yearLvl">Year: </label><br>
-            <input type = "number" min = "0" max = "50" name = "yearLvl" id = "yearLvl"><br>
-            <label for = "graduating">Graduating </label>
-            <input type = "checkbox" name = "graduating" id = "graduating" value=1><br>
+            <input type = "number" min = "0" max = "50" name = "yearLvl" id = "yearLvl"><br><br>
+            <label for = "graduating">Graduating?</label>
+            <input type = "checkbox" name = "graduating" id = "graduating" value=1><br><br>
             <label for = "profile">Profile File/Image: </label><br>
             <input type = "file" name = "profile" id = "profile"><br>
             <br><input type = "submit" name = "submit" value = "Register">
@@ -102,6 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["select"])) {
                 <input type = "submit" name = "showUpdate" value = "Update Student">
                 <input type = "submit" name = "delete" value = "Delete Student">
             </div>
+        </div>
 
             <?php if ($showUpdateForm): ?>
                 <h4>Update Information</h4>
